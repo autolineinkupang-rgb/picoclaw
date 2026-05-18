@@ -1239,7 +1239,7 @@ func LoadConfig(path string) (*Config, error) {
 			return nil, err
 		}
 
-		err = makeBackup(path)
+		err = MakeBackup(path)
 		if err != nil {
 			return nil, err
 		}
@@ -1293,7 +1293,7 @@ func LoadConfig(path string) (*Config, error) {
 			return nil, err
 		}
 
-		err = makeBackup(path)
+		err = MakeBackup(path)
 		if err != nil {
 			return nil, err
 		}
@@ -1345,7 +1345,7 @@ func LoadConfig(path string) (*Config, error) {
 			return nil, err
 		}
 
-		err = makeBackup(path)
+		err = MakeBackup(path)
 		if err != nil {
 			return nil, err
 		}
@@ -1496,7 +1496,7 @@ func applySkillsRegistryEnvCompat(cfg *Config) {
 	cfg.Tools.Skills.Registries.Set("github", githubCfg)
 }
 
-func makeBackup(path string) error {
+func MakeBackup(path string) error {
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 		return nil
 	}
@@ -1622,6 +1622,19 @@ func (c *Config) ValidateModelList() error {
 
 func (c *Config) SecurityCopyFrom(path string) error {
 	return loadSecurityConfig(c, securityPath(path))
+}
+
+// ResetToDefaults backs up the current config, creates a default config,
+// preserves security credentials from the existing config, and saves it.
+func ResetToDefaults(configPath string) error {
+	if err := MakeBackup(configPath); err != nil {
+		return fmt.Errorf("backup before reset: %w", err)
+	}
+	cfg := DefaultConfig()
+	if err := cfg.SecurityCopyFrom(configPath); err != nil {
+		logger.WarnF("could not preserve security config", map[string]any{"error": err})
+	}
+	return SaveConfig(configPath, cfg)
 }
 
 func expandMultiKeyModels(models []*ModelConfig) []*ModelConfig {

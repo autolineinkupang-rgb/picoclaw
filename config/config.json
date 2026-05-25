@@ -5,15 +5,16 @@
       "workspace": "~/.picoclaw/workspace",
       "restrict_to_workspace": true,
       "model_name": "groq",
+      "fallback_models": ["groq-fallback", "groq-large"],
       "max_tokens": 1024,
       "context_window": 8192,
       "temperature": 0.7,
-      "max_tool_iterations": 10,
+      "max_tool_iterations": 3,
       "summarize_message_threshold": 10,
       "summarize_token_percent": 75,
       "split_on_marker": false,
-      "max_llm_retries": 3,
-      "llm_retry_backoff_secs": 5,
+      "max_llm_retries": 1,
+      "llm_retry_backoff_secs": 20,
       "tool_feedback": {
         "enabled": false,
         "max_args_length": 300,
@@ -53,7 +54,7 @@
         "proxy": "",
         "use_markdown_v2": false,
         "streaming": {
-          "enabled": true
+          "enabled": false
         }
       }
     }
@@ -69,18 +70,18 @@
       }
     },
     "cron": {
-      "enabled": true,
+      "enabled": false,
       "exec_timeout_minutes": 5
     },
     "exec": {
-      "enabled": true,
+      "enabled": false,
       "enable_deny_patterns": true
     },
     "read_file": { "enabled": true },
     "write_file": { "enabled": true },
     "list_dir": { "enabled": true },
     "web_fetch": { "enabled": true },
-    "subagent": { "enabled": true },
+    "subagent": { "enabled": false },
     "message": { "enabled": true }
   },
   "gateway": {

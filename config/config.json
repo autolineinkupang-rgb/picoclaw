@@ -1,0 +1,80 @@
+{
+  "version": 3,
+  "agents": {
+    "defaults": {
+      "workspace": "~/.picoclaw/workspace",
+      "restrict_to_workspace": true,
+      "model_name": "claude-sonnet",
+      "max_tokens": 8192,
+      "context_window": 131072,
+      "temperature": 0.7,
+      "max_tool_iterations": 20,
+      "summarize_message_threshold": 20,
+      "summarize_token_percent": 75,
+      "split_on_marker": false,
+      "max_llm_retries": 2,
+      "llm_retry_backoff_secs": 2,
+      "tool_feedback": {
+        "enabled": false,
+        "max_args_length": 300,
+        "separate_messages": false
+      }
+    }
+  },
+  "model_list": [
+    {
+      "model_name": "claude-sonnet",
+      "model": "anthropic/claude-sonnet-4-6",
+      "api_keys": ["YOUR_ANTHROPIC_API_KEY"],
+      "api_base": "https://api.anthropic.com/v1"
+    }
+  ],
+  "channel_list": {
+    "telegram": {
+      "enabled": true,
+      "type": "telegram",
+      "allow_from": ["YOUR_TELEGRAM_USER_ID"],
+      "reasoning_channel_id": "",
+      "settings": {
+        "token": "YOUR_TELEGRAM_BOT_TOKEN",
+        "base_url": "",
+        "proxy": "",
+        "use_markdown_v2": false,
+        "streaming": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "tools": {
+    "web": {
+      "enabled": true,
+      "prefer_native": true,
+      "format": "plaintext",
+      "duckduckgo": {
+        "enabled": true,
+        "max_results": 5
+      }
+    },
+    "cron": {
+      "enabled": true,
+      "exec_timeout_minutes": 5
+    },
+    "exec": {
+      "enabled": true,
+      "enable_deny_patterns": true
+    },
+    "read_file": { "enabled": true },
+    "write_file": { "enabled": true },
+    "list_dir": { "enabled": true },
+    "web_fetch": { "enabled": true },
+    "subagent": { "enabled": true },
+    "message": { "enabled": true }
+  },
+  "gateway": {
+    "host": "0.0.0.0",
+    "port": 10000,
+    "hot_reload": false,
+    "log_level": "info"
+  }
+}

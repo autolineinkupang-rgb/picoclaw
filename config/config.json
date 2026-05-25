@@ -5,15 +5,15 @@
       "workspace": "~/.picoclaw/workspace",
       "restrict_to_workspace": true,
       "model_name": "groq",
-      "max_tokens": 8192,
-      "context_window": 131072,
+      "max_tokens": 1024,
+      "context_window": 8192,
       "temperature": 0.7,
-      "max_tool_iterations": 20,
-      "summarize_message_threshold": 20,
+      "max_tool_iterations": 10,
+      "summarize_message_threshold": 10,
       "summarize_token_percent": 75,
       "split_on_marker": false,
-      "max_llm_retries": 2,
-      "llm_retry_backoff_secs": 2,
+      "max_llm_retries": 3,
+      "llm_retry_backoff_secs": 5,
       "tool_feedback": {
         "enabled": false,
         "max_args_length": 300,
@@ -23,10 +23,22 @@
   },
   "model_list": [
   {
-  "model_name": "groq",
-  "model": "groq/llama-3.3-70b-versatile",
-  "api_keys": ["$GROQ_API_KEY"],
-  "api_base": "https://api.groq.com/openai/v1"
+    "model_name": "groq",
+    "model": "groq/llama-3.1-8b-instant",
+    "api_keys": ["$GROQ_API_KEY"],
+    "api_base": "https://api.groq.com/openai/v1"
+  },
+  {
+    "model_name": "groq-fallback",
+    "model": "groq/llama-3.2-3b-preview",
+    "api_keys": ["$GROQ_API_KEY"],
+    "api_base": "https://api.groq.com/openai/v1"
+  },
+  {
+    "model_name": "groq-large",
+    "model": "groq/llama-3.3-70b-versatile",
+    "api_keys": ["$GROQ_API_KEY"],
+    "api_base": "https://api.groq.com/openai/v1"
   }
   ],
   "channel_list": {

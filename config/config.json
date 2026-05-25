@@ -4,8 +4,13 @@
     "defaults": {
       "workspace": "~/.picoclaw/workspace",
       "restrict_to_workspace": true,
-      "model_name": "groq",
-      "fallback_models": ["groq-fallback", "groq-large"],
+      "model": {
+        "primary": "groq",
+        "fallbacks": [
+          "groq-fallback",
+          "groq-large"
+        ]
+      },
       "max_tokens": 1024,
       "context_window": 8192,
       "temperature": 0.7,
@@ -23,30 +28,38 @@
     }
   },
   "model_list": [
-  {
-    "model_name": "groq",
-    "model": "groq/llama-3.1-8b-instant",
-    "api_keys": ["$GROQ_API_KEY"],
-    "api_base": "https://api.groq.com/openai/v1"
-  },
-  {
-    "model_name": "groq-fallback",
-    "model": "groq/llama-3.2-3b-preview",
-    "api_keys": ["$GROQ_API_KEY"],
-    "api_base": "https://api.groq.com/openai/v1"
-  },
-  {
-    "model_name": "groq-large",
-    "model": "groq/llama-3.3-70b-versatile",
-    "api_keys": ["$GROQ_API_KEY"],
-    "api_base": "https://api.groq.com/openai/v1"
-  }
+    {
+      "model_name": "groq",
+      "model": "groq/llama-3.1-8b-instant",
+      "api_keys": [
+        "$GROQ_API_KEY"
+      ],
+      "api_base": "https://api.groq.com/openai/v1"
+    },
+    {
+      "model_name": "groq-fallback",
+      "model": "groq/llama-3.2-3b-preview",
+      "api_keys": [
+        "$GROQ_API_KEY"
+      ],
+      "api_base": "https://api.groq.com/openai/v1"
+    },
+    {
+      "model_name": "groq-large",
+      "model": "groq/llama-3.3-70b-versatile",
+      "api_keys": [
+        "$GROQ_API_KEY"
+      ],
+      "api_base": "https://api.groq.com/openai/v1"
+    }
   ],
   "channel_list": {
     "telegram": {
       "enabled": true,
       "type": "telegram",
-      "allow_from": ["$TELEGRAM_USER_ID"],
+      "allow_from": [
+        "$TELEGRAM_USER_ID"
+      ],
       "reasoning_channel_id": "",
       "settings": {
         "token": "$TELEGRAM_BOT_TOKEN",
@@ -77,12 +90,24 @@
       "enabled": false,
       "enable_deny_patterns": true
     },
-    "read_file": { "enabled": true },
-    "write_file": { "enabled": true },
-    "list_dir": { "enabled": true },
-    "web_fetch": { "enabled": true },
-    "subagent": { "enabled": false },
-    "message": { "enabled": true }
+    "read_file": {
+      "enabled": true
+    },
+    "write_file": {
+      "enabled": true
+    },
+    "list_dir": {
+      "enabled": true
+    },
+    "web_fetch": {
+      "enabled": true
+    },
+    "subagent": {
+      "enabled": false
+    },
+    "message": {
+      "enabled": true
+    }
   },
   "gateway": {
     "host": "0.0.0.0",

@@ -25,7 +25,7 @@
   {
   "model_name": "groq",
   "model": "groq/llama-3.3-70b-versatile",
-  "api_keys": ["${GROQ_API_KEY}"],
+  "api_keys": ["$GROQ_API_KEY"],
   "api_base": "https://api.groq.com/openai/v1"
   }
   ],
@@ -33,10 +33,10 @@
     "telegram": {
       "enabled": true,
       "type": "telegram",
-      "allow_from": ["${TELEGRAM_USER_ID}"],
+      "allow_from": ["$TELEGRAM_USER_ID"],
       "reasoning_channel_id": "",
       "settings": {
-        "token": "${TELEGRAM_BOT_TOKEN}",
+        "token": "$TELEGRAM_BOT_TOKEN",
         "base_url": "",
         "proxy": "",
         "use_markdown_v2": false,

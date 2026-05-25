@@ -25,7 +25,7 @@
     {
       "model_name": "claude-sonnet",
       "model": "anthropic/claude-sonnet-4-6",
-      "api_keys": ["YOUR_ANTHROPIC_API_KEY"],
+      "api_keys": ["${ANTHROPIC_API_KEY}"],
       "api_base": "https://api.anthropic.com/v1"
     }
   ],
@@ -33,10 +33,10 @@
     "telegram": {
       "enabled": true,
       "type": "telegram",
-      "allow_from": ["YOUR_TELEGRAM_USER_ID"],
+      "allow_from": ["${TELEGRAM_USER_ID}"],
       "reasoning_channel_id": "",
       "settings": {
-        "token": "YOUR_TELEGRAM_BOT_TOKEN",
+        "token": "${TELEGRAM_BOT_TOKEN}",
         "base_url": "",
         "proxy": "",
         "use_markdown_v2": false,
